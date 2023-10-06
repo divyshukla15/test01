@@ -30,7 +30,7 @@ class _BeneficiaryState extends State<Beneficiary> {
         padding: EdgeInsets.only(left: 10, right: 10),
         hint: const Text("Beneficiary (optional)"),
         value: dropdownValue != "" ? dropdownValue : null,
-        underline: Container(height: 2),
+       underline: Container(height: 2),
         onChanged: (String? value) {
           setState(() {
             dropdownValue = value!;

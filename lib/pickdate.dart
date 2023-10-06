@@ -13,23 +13,34 @@ class Date extends StatefulWidget {
   State<Date> createState() => _DateState();
 }
 //var currentDate='Date';
-class _DateState extends State<Date> {
   TextEditingController dateController = TextEditingController();
+
+class _DateState extends State<Date> {
   @override
   Widget build(BuildContext context) {
-    return  Container(height: 50,
-    decoration:
-          BoxDecoration(border: Border.all(color:Colors.white),
-          borderRadius: BorderRadius.all(Radius.circular(8.0))),
-      child: TextField(
+    return  Container(
+      //height: 50,
+    // decoration:
+    //       BoxDecoration(border: Border.all(color:Colors.white),
+    //       borderRadius: BorderRadius.all(Radius.circular(8.0))),
+      child: TextFormField(
+        validator: (value){
+          if(value!.isEmpty){
+            return " Please Select a date";
+          }
+          else{
+            return null;
+          }
+        },
         controller: dateController,
        // cursorRadius: Radius.circular(5),
         decoration: const InputDecoration(
           border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0))),
-              
+          isDense: true,    
           hintText: 'Date',
-          contentPadding: EdgeInsets.only(top: 10, left:10)
+          // contentPadding: EdgeInsets.only(top: 10, left:10
+          // )
            
         ),   readOnly: true, 
         onTap: ()async {

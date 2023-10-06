@@ -11,20 +11,23 @@ class ImagePick extends StatefulWidget {
   @override
   State<ImagePick> createState() => _ImagePickState();
 }
-TextEditingController img = TextEditingController();
+
+File? image;
 class _ImagePickState extends State<ImagePick> {
-  File? image;
+  File? _image ;
+  
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
       setState(() {
-        this.image = imageTemp;
+        _image = imageTemp;
       });
     } on PlatformException catch (e) {
       return ('failed to pick $e');
     }
+    image=_image;
   }
 
   @override

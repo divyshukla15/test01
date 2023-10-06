@@ -6,19 +6,34 @@ class DocDesc extends StatefulWidget {
   @override
   State<DocDesc> createState() => _DocDescState();
 }
+
 TextEditingController docDesc = TextEditingController();
+
 class _DocDescState extends State<DocDesc> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      child: const TextField(
-        decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
+    return SizedBox(
+      //eight: 50,
+      child: TextFormField(
+        controller: docDesc,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return " Fill this Field";
+          } else {
+            docDesc.text = value.toString();
+          }
+          return null;
+        },
+        decoration: const InputDecoration(
+          focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderSide: BorderSide(color: Colors.white)),
+            border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 borderSide: BorderSide(color: Colors.white)),
             isDense: true,
-            border: OutlineInputBorder(),
+            disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0))),
+            //border: OutlineInputBorder(),
             hintText: 'Document Description',
             focusColor: Colors.amberAccent,
             focusedBorder: OutlineInputBorder(
